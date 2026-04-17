@@ -1,26 +1,642 @@
 @import "tailwindcss";
 
+/* ================================================================
+   Velvet Society — Design System
+   ================================================================ */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #0a0a0b;
+  --bg-soft: #121214;
+  --bg-card: #17171a;
+  --bg-elevated: #1c1c20;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-soft: rgba(255, 255, 255, 0.04);
+
+  --text: #f4f4f5;
+  --text-muted: #a1a1aa;
+  --text-dim: #71717a;
+  --text-faint: #52525b;
+
+  --accent: #a3b68c;          /* sage olive */
+  --accent-soft: #d4ddc6;
+  --accent-ink: #0a0a0b;
+  --success: #a3b68c;
+
+  --display: 'Fraunces', serif;
+  --sans: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'JetBrains Mono', 'SF Mono', monospace;
+  --wordmark: 'Cormorant Garamond', serif;
+
+  --radius: 18px;
+  --radius-sm: 12px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.01em;
+  min-height: 100vh;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ================================================================
+   App-Layout
+   ================================================================ */
+
+.app-screen {
+  min-height: 100vh;
+  min-height: 100dvh;
+  max-width: 430px;
+  margin: 0 auto;
+  padding: 24px 24px 100px;
+  padding-top: calc(24px + env(safe-area-inset-top, 0px));
+  padding-bottom: calc(100px + env(safe-area-inset-bottom, 0px));
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ================================================================
+   Home-Header
+   ================================================================ */
+
+.home-header { padding-bottom: 20px; }
+.home-header .greet {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-dim);
 }
+.home-header .name {
+  font-family: var(--display);
+  font-size: 34px;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  margin-top: 8px;
+  line-height: 1;
+}
+.home-header .name em {
+  font-style: italic;
+  color: var(--accent);
+  font-weight: 300;
+}
+
+/* ================================================================
+   Creator-Karte (Gold-Member-Preview)
+   ================================================================ */
+
+.creator-card {
+  padding: 22px;
+  border-radius: 22px;
+  background: linear-gradient(160deg, #334226 0%, #1f2817 60%, #151b10 100%);
+  border: 1px solid rgba(163, 182, 140, 0.25);
+  box-shadow: 0 30px 60px -30px rgba(45, 58, 32, 0.6);
+  margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.creator-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 26px;
+}
+
+.card-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+}
+.card-brand-text span {
+  font-family: var(--wordmark);
+  font-size: 14px;
+  letter-spacing: 0.3em;
+  display: block;
+}
+.card-brand-text small {
+  font-family: var(--mono);
+  font-size: 8px;
+  color: var(--text-muted);
+  letter-spacing: 0.3em;
+}
+
+.card-tier-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(163, 182, 140, 0.12);
+  border: 1px solid rgba(163, 182, 140, 0.3);
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 20px;
+}
+.card-name {
+  font-family: var(--display);
+  font-size: 18px;
+  color: var(--text);
+}
+.card-name small {
+  display: block;
+  font-family: var(--mono);
+  font-size: 8px;
+  color: var(--text-muted);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+.card-rating {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--accent);
+  font-family: var(--display);
+  font-size: 14px;
+}
+.card-rating small {
+  color: var(--text-dim);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-left: 6px;
+}
+
+/* ================================================================
+   Section-Überschriften
+   ================================================================ */
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 28px 0 14px;
+}
+.section-head h2 {
+  font-family: var(--display);
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+.section-head h2 em {
+  font-style: italic;
+  color: var(--accent);
+}
+.section-head a {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  cursor: pointer;
+}
+
+/* ================================================================
+   Deal-Karten
+   ================================================================ */
+
+.deals-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.deal {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+.deal:hover {
+  transform: translateY(-2px);
+  border-color: rgba(163, 182, 140, 0.3);
+}
+
+.deal-media {
+  aspect-ratio: 4/3;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--bg-elevated);
+  position: relative;
+}
+
+.deal-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 4px 9px;
+  background: rgba(10, 10, 11, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.deal-value {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  padding: 4px 9px;
+  background: rgba(10, 10, 11, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 999px;
+  font-family: var(--display);
+  font-size: 13px;
+  color: var(--accent);
+}
+
+.deal-body { padding: 12px; }
+.deal-brand {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 5px;
+}
+.deal-title {
+  font-family: var(--display);
+  font-size: 15px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin-bottom: 5px;
+}
+.deal-req {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.05em;
+  color: var(--text-dim);
+}
+
+/* ================================================================
+   Loading-States
+   ================================================================ */
+
+.loading {
+  padding: 60px 20px;
+  text-align: center;
+  color: var(--text-dim);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.error {
+  padding: 40px 20px;
+  text-align: center;
+  color: #ff6a6a;
+  font-family: var(--mono);
+  font-size: 12px;
+}
+
+/* ================================================================
+   Bottom-Nav (fixed, am unteren Rand) — !important damit Tailwind nicht dazwischenhaut
+   ================================================================ */
+
+nav.bottom-nav {
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 100 !important;
+  max-width: 430px !important;
+  margin: 0 auto !important;
+  background: rgba(10, 10, 11, 0.85) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-top: 1px solid var(--border) !important;
+  display: flex !important;
+  justify-content: space-around !important;
+  align-items: center !important;
+  padding: 12px 10px calc(18px + env(safe-area-inset-bottom, 0px)) !important;
+  height: auto !important;
+}
+
+nav.bottom-nav a.nav-btn {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 4px !important;
+  padding: 6px 4px !important;
+  background: none !important;
+  border: none !important;
+  cursor: pointer !important;
+  color: var(--text-dim) !important;
+  text-decoration: none !important;
+  font-family: var(--sans) !important;
+  font-size: 9px !important;
+  letter-spacing: 0.1em !important;
+  transition: color 0.15s var(--ease) !important;
+  min-width: 0 !important;
+}
+
+nav.bottom-nav a.nav-btn svg {
+  width: 20px !important;
+  height: 20px !important;
+  max-width: 20px !important;
+  max-height: 20px !important;
+  stroke: currentColor !important;
+  fill: none !important;
+  stroke-width: 1.8 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+  flex-shrink: 0 !important;
+  display: block !important;
+}
+
+nav.bottom-nav a.nav-btn span {
+  font-size: 9px !important;
+  line-height: 1 !important;
+  display: block !important;
+}
+
+nav.bottom-nav a.nav-btn.active {
+  color: var(--accent) !important;
+}
+
+nav.bottom-nav a.nav-btn:hover {
+  color: var(--text) !important;
+}
+
+nav.bottom-nav a.nav-btn.active:hover {
+  color: var(--accent) !important;
+}
+
+/* ================================================================
+   Placeholder-Screens (Kommt bald)
+   ================================================================ */
+
+.placeholder-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+  padding: 40px 24px;
+}
+
+.placeholder-screen h2 {
+  font-family: var(--display);
+  font-size: 32px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+.placeholder-screen h2 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.placeholder-screen p {
+  color: var(--text-muted);
+  font-size: 14px;
+  max-width: 280px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.placeholder-screen .soon-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(163, 182, 140, 0.1);
+  border: 1px solid rgba(163, 182, 140, 0.3);
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+/* ================================================================
+   City-Picker-Button (im Header)
+   ================================================================ */
+
+.home-header .greet {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.city-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(163, 182, 140, 0.1);
+  border: 1px solid rgba(163, 182, 140, 0.25);
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 4px 10px 4px 8px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.15s var(--ease);
+}
+.city-pill:hover {
+  background: rgba(163, 182, 140, 0.18);
+  border-color: rgba(163, 182, 140, 0.4);
+}
+.city-pill svg {
+  width: 11px;
+  height: 11px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  flex-shrink: 0;
+}
+.city-pill .chev {
+  opacity: 0.7;
+  width: 10px;
+  height: 10px;
+}
+
+/* ================================================================
+   City-Picker-Overlay & Modal
+   ================================================================ */
+
+.city-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  animation: fadeIn 0.2s var(--ease);
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.city-modal {
+  width: 100%;
+  max-width: 430px;
+  background: var(--bg-soft);
+  border-top: 1px solid var(--border);
+  border-radius: 24px 24px 0 0;
+  padding: 18px 24px calc(24px + env(safe-area-inset-bottom, 0px));
+  animation: slideUp 0.28s var(--ease);
+}
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+
+.city-modal .city-grip {
+  width: 36px;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--text-faint);
+  margin: 0 auto 18px;
+  opacity: 0.5;
+}
+
+.city-modal h3 {
+  font-family: var(--display);
+  font-size: 26px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+.city-modal h3 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.city-modal .lead {
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+
+.city-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 340px;
+  overflow-y: auto;
+  margin-bottom: 18px;
+}
+
+.city-opt {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 0.15s var(--ease);
+}
+.city-opt:hover { border-color: var(--text-dim); }
+.city-opt.selected {
+  background: rgba(163, 182, 140, 0.08);
+  border-color: rgba(163, 182, 140, 0.4);
+}
+
+.city-opt .check {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  border: 1.5px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.15s var(--ease);
+}
+.city-opt.selected .check {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.city-opt .check svg {
+  width: 12px;
+  height: 12px;
+  stroke: var(--accent-ink);
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0;
+  transition: opacity 0.15s var(--ease);
+}
+.city-opt.selected .check svg { opacity: 1; }
+
+.city-opt .city-name {
+  flex: 1;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+}
+.city-opt .city-count {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.city-opt.selected .city-count { color: var(--accent); }
+
+.city-done {
+  width: 100%;
+  padding: 14px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: opacity 0.15s var(--ease);
+}
+.city-done:hover { opacity: 0.9; }
+.city-done:disabled { opacity: 0.6; cursor: wait; }
+
+...
+.placeholder-screen .soon-badge {
+  /* ... */
+}
+
+/* ================================================================
+   City-Picker-Button (im Header) — mit !important für Tailwind v4
+   ================================================================ */
+
+.home-header .greet {
+  display: inline-flex !important;
+  /* ... */
+}
+
+/* ... der ganze Rest vom City-Picker-CSS ... */
