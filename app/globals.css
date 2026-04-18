@@ -625,11 +625,6 @@ nav.bottom-nav a.nav-btn.active:hover {
 .city-done:hover { opacity: 0.9; }
 .city-done:disabled { opacity: 0.6; cursor: wait; }
 
-...
-.placeholder-screen .soon-badge {
-  /* ... */
-}
-
 /* ================================================================
    City-Picker-Button (im Header) — mit !important für Tailwind v4
    ================================================================ */
@@ -640,3 +635,597 @@ nav.bottom-nav a.nav-btn.active:hover {
 }
 
 /* ... der ganze Rest vom City-Picker-CSS ... */
+
+/* ================================================================
+   Karte — Leaflet-Container & Custom Pins
+   ================================================================ */
+
+#leafletMap {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  z-index: 1 !important;
+  background: #0a0a0b !important;
+  max-width: 430px !important;
+  margin: 0 auto !important;
+}
+
+#leafletMap .leaflet-tile {
+  filter: brightness(0.7) contrast(1.05) saturate(0.75) hue-rotate(-10deg) !important;
+}
+
+#leafletMap .leaflet-control-zoom {
+  display: none !important;
+}
+
+#leafletMap .leaflet-control-attribution {
+  background: rgba(10, 10, 11, 0.7) !important;
+  color: var(--text-dim) !important;
+  font-size: 8px !important;
+  font-family: var(--mono) !important;
+  letter-spacing: 0.05em !important;
+  border: none !important;
+  padding: 2px 6px !important;
+  backdrop-filter: blur(4px) !important;
+}
+#leafletMap .leaflet-control-attribution a {
+  color: var(--text-muted) !important;
+}
+
+.velvet-pin {
+  width: 44px !important;
+  height: 44px !important;
+  position: relative !important;
+}
+.velvet-pin .dot {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 50% 50% 50% 0 !important;
+  background: var(--accent) !important;
+  transform: translate(-50%, -55%) rotate(-45deg) !important;
+  box-shadow: 0 6px 16px rgba(163, 182, 140, 0.45), 0 0 0 2px rgba(10, 10, 11, 0.6) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.velvet-pin .dot svg {
+  transform: rotate(45deg) !important;
+  width: 14px !important;
+  height: 14px !important;
+  max-width: 14px !important;
+  max-height: 14px !important;
+  color: var(--accent-ink) !important;
+  stroke: currentColor !important;
+  fill: none !important;
+  stroke-width: 2.2 !important;
+}
+.velvet-pin.other .dot {
+  background: var(--bg-elevated) !important;
+  border: 2px solid var(--accent) !important;
+}
+.velvet-pin.other .dot svg {
+  color: var(--accent) !important;
+}
+
+.velvet-pin.primary::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50% !important;
+  border: 1.5px solid var(--accent) !important;
+  opacity: 0.5 !important;
+  animation: pinPulse 2.2s var(--ease) infinite !important;
+}
+@keyframes pinPulse {
+  0% { transform: translate(-50%, -50%) scale(0.7); opacity: 0.8; }
+  100% { transform: translate(-50%, -50%) scale(1.8); opacity: 0; }
+}
+
+.velvet-me {
+  width: 22px !important;
+  height: 22px !important;
+  border-radius: 50% !important;
+  background: #4a9eff !important;
+  border: 3px solid #fff !important;
+  box-shadow: 0 0 0 2px rgba(74, 158, 255, 0.3), 0 4px 12px rgba(74, 158, 255, 0.5) !important;
+}
+
+.leaflet-popup-content-wrapper {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+}
+.leaflet-popup-content {
+  margin: 12px 16px !important;
+  font-family: var(--sans) !important;
+}
+.leaflet-popup-tip {
+  background: var(--bg-card) !important;
+}
+.velvet-popup .popup-brand {
+  font-family: var(--display) !important;
+  font-size: 15px !important;
+  color: var(--text) !important;
+  margin-bottom: 4px !important;
+}
+.velvet-popup .popup-cat {
+  font-family: var(--mono) !important;
+  font-size: 9px !important;
+  letter-spacing: 0.2em !important;
+  color: var(--accent) !important;
+}
+
+.map-floating-header {
+  position: fixed !important;
+  top: calc(16px + env(safe-area-inset-top, 0px)) !important;
+  left: 16px !important;
+  right: 16px !important;
+  max-width: calc(430px - 32px) !important;
+  margin: 0 auto !important;
+  z-index: 10 !important;
+  display: flex !important;
+  gap: 10px !important;
+  align-items: center !important;
+}
+
+.map-floating-header .map-search {
+  flex: 1 !important;
+  background: rgba(10, 10, 11, 0.85) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border: 1px solid var(--border) !important;
+  padding: 12px 16px !important;
+  border-radius: 999px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  font-size: 13px !important;
+  color: var(--text-muted) !important;
+}
+.map-floating-header .map-search svg {
+  width: 16px !important;
+  height: 16px !important;
+  max-width: 16px !important;
+  max-height: 16px !important;
+  stroke: currentColor !important;
+  fill: none !important;
+  stroke-width: 2 !important;
+}
+
+/* ================================================================
+   Location-Button & Info-Banner auf der Karte
+   ================================================================ */
+
+.map-location-btn {
+  position: fixed !important;
+  top: calc(80px + env(safe-area-inset-top, 0px)) !important;
+  right: 16px !important;
+  z-index: 15 !important;
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50% !important;
+  background: rgba(10, 10, 11, 0.85) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--accent) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.15s var(--ease) !important;
+}
+.map-location-btn:hover {
+  background: rgba(10, 10, 11, 0.95) !important;
+  border-color: rgba(163, 182, 140, 0.4) !important;
+}
+.map-location-btn:active {
+  transform: scale(0.95) !important;
+}
+.map-location-btn:disabled {
+  cursor: wait !important;
+  opacity: 0.7 !important;
+}
+.map-location-btn svg {
+  width: 20px !important;
+  height: 20px !important;
+  stroke: currentColor !important;
+  fill: none !important;
+  stroke-width: 2 !important;
+  stroke-linecap: round !important;
+}
+
+.loc-spinner {
+  width: 16px !important;
+  height: 16px !important;
+  border: 2px solid rgba(163, 182, 140, 0.2) !important;
+  border-top-color: var(--accent) !important;
+  border-radius: 50% !important;
+  animation: locSpin 0.8s linear infinite !important;
+}
+@keyframes locSpin {
+  to { transform: rotate(360deg); }
+}
+
+.map-info-banner {
+  position: fixed !important;
+  bottom: calc(100px + env(safe-area-inset-bottom, 0px)) !important;
+  left: 16px !important;
+  right: 16px !important;
+  max-width: calc(430px - 32px) !important;
+  margin: 0 auto !important;
+  z-index: 15 !important;
+  padding: 14px 18px !important;
+  border-radius: var(--radius-sm) !important;
+  background: rgba(10, 10, 11, 0.9) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border: 1px solid var(--border) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+}
+.map-info-banner strong {
+  font-family: var(--sans) !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: var(--text) !important;
+}
+.map-info-banner span {
+  font-size: 12px !important;
+  color: var(--text-muted) !important;
+  line-height: 1.4 !important;
+}
+
+/* ================================================================
+   Distanz-Tag im Popup
+   ================================================================ */
+
+.velvet-popup .popup-cat {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  justify-content: space-between !important;
+}
+.velvet-popup .popup-cat .popup-dist {
+  color: var(--text-muted) !important;
+  letter-spacing: 0.1em !important;
+  padding-left: 8px !important;
+  border-left: 1px solid var(--border) !important;
+}
+
+/* ================================================================
+   Nearest-Brand-Karte (schwebt unten über Bottom-Nav)
+   ================================================================ */
+
+.map-nearest-card {
+  position: fixed !important;
+  bottom: calc(100px + env(safe-area-inset-bottom, 0px)) !important;
+  left: 16px !important;
+  right: 16px !important;
+  max-width: calc(430px - 32px) !important;
+  margin: 0 auto !important;
+  z-index: 15 !important;
+  padding: 16px 18px !important;
+  border-radius: var(--radius) !important;
+  background: rgba(17, 17, 20, 0.95) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border: 1px solid rgba(163, 182, 140, 0.3) !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5) !important;
+  cursor: pointer !important;
+  transition: transform 0.2s var(--ease), border-color 0.2s var(--ease) !important;
+}
+.map-nearest-card:hover {
+  transform: translateY(-2px) !important;
+  border-color: rgba(163, 182, 140, 0.5) !important;
+}
+.map-nearest-card:active {
+  transform: translateY(0) scale(0.99) !important;
+}
+
+.nearest-top {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-bottom: 6px !important;
+}
+.nearest-label {
+  font-family: var(--mono) !important;
+  font-size: 9px !important;
+  letter-spacing: 0.2em !important;
+  text-transform: uppercase !important;
+  color: var(--accent) !important;
+  font-weight: 600 !important;
+}
+.nearest-dist {
+  font-family: var(--mono) !important;
+  font-size: 10px !important;
+  letter-spacing: 0.1em !important;
+  color: var(--text-muted) !important;
+  padding: 3px 8px !important;
+  border-radius: 999px !important;
+  background: rgba(163, 182, 140, 0.12) !important;
+  border: 1px solid rgba(163, 182, 140, 0.25) !important;
+}
+.nearest-name {
+  font-family: var(--display) !important;
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.01em !important;
+  color: var(--text) !important;
+  line-height: 1.1 !important;
+  margin-bottom: 4px !important;
+}
+.nearest-cat {
+  font-family: var(--mono) !important;
+  font-size: 9px !important;
+  letter-spacing: 0.2em !important;
+  color: var(--text-dim) !important;
+}
+
+/* ================================================================
+   Check-In Screen
+   ================================================================ */
+
+.checkin-main {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+.checkin-header {
+  margin-bottom: 24px !important;
+  padding: 0 8px !important;
+}
+.checkin-header .greet {
+  font-family: var(--mono) !important;
+  font-size: 10px !important;
+  letter-spacing: 0.2em !important;
+  text-transform: uppercase !important;
+  color: var(--text-dim) !important;
+  margin-bottom: 8px !important;
+}
+.checkin-header h2 {
+  font-family: var(--display) !important;
+  font-size: 38px !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.03em !important;
+  margin-bottom: 10px !important;
+  line-height: 1 !important;
+}
+.checkin-header h2 em {
+  font-style: italic !important;
+  color: var(--accent) !important;
+  font-weight: 300 !important;
+}
+.checkin-header p {
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+  color: var(--text-muted) !important;
+  max-width: 300px !important;
+  margin: 0 auto !important;
+}
+
+/* QR-Card — dunkelgrüner Container */
+.qr-card {
+  width: 100% !important;
+  max-width: 340px !important;
+  padding: 22px 22px 24px !important;
+  border-radius: 24px !important;
+  background: linear-gradient(160deg, #334226 0%, #1f2817 60%, #151b10 100%) !important;
+  border: 1px solid rgba(163, 182, 140, 0.25) !important;
+  box-shadow: 0 30px 60px -30px rgba(45, 58, 32, 0.6) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 20px !important;
+  margin-bottom: 14px !important;
+}
+
+/* Member-Zeile */
+.qr-member-row {
+  width: 100% !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+.qr-member-left {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  text-align: left !important;
+}
+.qr-avatar {
+  width: 42px !important;
+  height: 42px !important;
+  border-radius: 50% !important;
+  background: rgba(163, 182, 140, 0.15) !important;
+  border: 1.5px solid rgba(163, 182, 140, 0.4) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-family: var(--display) !important;
+  font-size: 18px !important;
+  color: var(--accent) !important;
+}
+.qr-name {
+  font-family: var(--display) !important;
+  font-size: 16px !important;
+  font-style: italic !important;
+  color: var(--text) !important;
+  line-height: 1.1 !important;
+}
+.qr-tier {
+  font-family: var(--mono) !important;
+  font-size: 9px !important;
+  letter-spacing: 0.2em !important;
+  color: var(--text-muted) !important;
+  margin-top: 3px !important;
+}
+.qr-rating {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  font-family: var(--display) !important;
+  font-size: 18px !important;
+  color: var(--text) !important;
+}
+.qr-rating svg {
+  width: 13px !important;
+  height: 13px !important;
+  color: var(--accent) !important;
+  fill: currentColor !important;
+  stroke: none !important;
+}
+
+/* QR-Box — weißer Container mit QR drin */
+.qr-big {
+  position: relative !important;
+  width: 220px !important;
+  height: 220px !important;
+  background: #fff !important;
+  border-radius: 18px !important;
+  padding: 14px !important;
+  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.5) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: opacity 0.3s var(--ease) !important;
+}
+.qr-big.refreshing {
+  opacity: 0.4 !important;
+}
+.qr-big svg {
+  width: 192px !important;
+  height: 192px !important;
+  max-width: 192px !important;
+  max-height: 192px !important;
+  display: block !important;
+}
+.qr-big .logo-overlay {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 42px !important;
+  height: 42px !important;
+  background: #2D3A20 !important;
+  border-radius: 10px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  pointer-events: none !important;
+  box-shadow: 0 0 0 3px #fff !important;
+}
+.qr-big .logo-overlay svg {
+  width: 26px !important;
+  height: 26px !important;
+  color: var(--accent) !important;
+}
+
+/* Code-Zeile unter QR */
+.qr-meta {
+  width: 100% !important;
+  max-width: 340px !important;
+  padding: 0 8px !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  font-family: var(--mono) !important;
+  font-size: 10px !important;
+  letter-spacing: 0.15em !important;
+  text-transform: uppercase !important;
+  margin-bottom: 22px !important;
+}
+.qr-code {
+  color: var(--text) !important;
+  letter-spacing: 0.18em !important;
+  font-weight: 600 !important;
+}
+.qr-valid {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  color: var(--accent) !important;
+}
+.qr-valid::before {
+  content: '' !important;
+  width: 6px !important;
+  height: 6px !important;
+  border-radius: 50% !important;
+  background: var(--accent) !important;
+  box-shadow: 0 0 6px var(--accent) !important;
+  display: inline-block !important;
+}
+
+/* Neu-Laden-Button */
+.qr-actions {
+  width: 100% !important;
+  max-width: 340px !important;
+  margin-bottom: 16px !important;
+}
+.qr-refresh {
+  width: 100% !important;
+  padding: 14px !important;
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  color: var(--text) !important;
+  font-family: var(--sans) !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  cursor: pointer !important;
+  transition: all 0.15s var(--ease) !important;
+}
+.qr-refresh:hover {
+  border-color: rgba(163, 182, 140, 0.4) !important;
+  color: var(--accent) !important;
+}
+.qr-refresh:disabled {
+  opacity: 0.6 !important;
+  cursor: wait !important;
+}
+.qr-refresh svg {
+  width: 16px !important;
+  height: 16px !important;
+  max-width: 16px !important;
+  max-height: 16px !important;
+  stroke: currentColor !important;
+  fill: none !important;
+  stroke-width: 2 !important;
+  transition: transform 0.4s var(--ease) !important;
+}
+.qr-refresh svg.spinning {
+  animation: qrSpin 0.8s linear !important;
+}
+@keyframes qrSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.qr-hint {
+  font-family: var(--mono) !important;
+  font-size: 9px !important;
+  letter-spacing: 0.15em !important;
+  text-transform: uppercase !important;
+  color: var(--text-faint) !important;
+  text-align: center !important;
+  padding: 0 24px !important;
+  line-height: 1.5 !important;
+}
