@@ -1229,3 +1229,273 @@ nav.bottom-nav a.nav-btn.active:hover {
   padding: 0 24px !important;
   line-height: 1.5 !important;
 }
+/* ================================================================
+   Chat-Screen
+   ================================================================ */
+
+.chat-main {
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 100vh !important;
+  max-width: 430px !important;
+  margin: 0 auto !important;
+}
+
+/* Header — sticky oben */
+.chat-header {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 50 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: calc(14px + env(safe-area-inset-top, 0px)) 20px 14px !important;
+  background: rgba(10, 10, 11, 0.9) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+.chat-avatar {
+  width: 42px !important;
+  height: 42px !important;
+  border-radius: 50% !important;
+  background: linear-gradient(135deg, #334226 0%, #1f2817 100%) !important;
+  border: 1.5px solid rgba(163, 182, 140, 0.4) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  color: var(--accent) !important;
+}
+.chat-avatar svg {
+  width: 22px !important;
+  height: 22px !important;
+  max-width: 22px !important;
+  max-height: 22px !important;
+}
+
+.chat-header-info {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2px !important;
+}
+.chat-title {
+  font-family: var(--display) !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  color: var(--text) !important;
+  letter-spacing: -0.01em !important;
+}
+.chat-status {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  font-family: var(--mono) !important;
+  font-size: 9px !important;
+  letter-spacing: 0.15em !important;
+  text-transform: uppercase !important;
+  color: var(--text-muted) !important;
+}
+.status-dot {
+  width: 6px !important;
+  height: 6px !important;
+  border-radius: 50% !important;
+  background: var(--accent) !important;
+  box-shadow: 0 0 8px var(--accent) !important;
+  display: inline-block !important;
+}
+
+/* Thread — scrollbarer Mittelbereich */
+.chat-thread {
+  flex: 1 !important;
+  overflow-y: auto !important;
+  padding: 20px 18px 200px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+}
+
+.chat-msg {
+  display: flex !important;
+  gap: 10px !important;
+  max-width: 100% !important;
+}
+.chat-msg.user {
+  flex-direction: row-reverse !important;
+}
+
+.chat-msg-avatar {
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 32px !important;
+  border-radius: 50% !important;
+  background: linear-gradient(135deg, #334226 0%, #1f2817 100%) !important;
+  border: 1px solid rgba(163, 182, 140, 0.3) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: var(--accent) !important;
+  flex-shrink: 0 !important;
+  align-self: flex-end !important;
+  margin-bottom: 4px !important;
+}
+.chat-msg-avatar svg {
+  width: 16px !important;
+  height: 16px !important;
+  max-width: 16px !important;
+  max-height: 16px !important;
+}
+
+.chat-msg-bubble {
+  max-width: 78% !important;
+  padding: 12px 14px !important;
+  border-radius: 16px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+}
+
+.chat-msg.bot .chat-msg-bubble {
+  background: var(--bg-elevated) !important;
+  border: 1px solid var(--border) !important;
+  border-bottom-left-radius: 4px !important;
+}
+.chat-msg.user .chat-msg-bubble {
+  background: rgba(163, 182, 140, 0.12) !important;
+  border: 1px solid rgba(163, 182, 140, 0.25) !important;
+  border-bottom-right-radius: 4px !important;
+  align-items: flex-end !important;
+}
+
+.chat-msg-content {
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  color: var(--text) !important;
+  white-space: pre-wrap !important;
+  word-break: break-word !important;
+}
+.chat-msg-content div {
+  min-height: 1em !important;
+}
+.chat-msg.user .chat-msg-content {
+  color: var(--text) !important;
+}
+
+.chat-msg-time {
+  font-family: var(--mono) !important;
+  font-size: 9px !important;
+  letter-spacing: 0.1em !important;
+  color: var(--text-faint) !important;
+}
+
+/* Quick-Reply-Buttons in Bot-Messages */
+.chat-quick-replies {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 6px !important;
+  margin-top: 8px !important;
+}
+.chat-quick-reply {
+  padding: 7px 12px !important;
+  background: rgba(163, 182, 140, 0.08) !important;
+  border: 1px solid rgba(163, 182, 140, 0.3) !important;
+  border-radius: 999px !important;
+  color: var(--accent) !important;
+  font-family: var(--sans) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: all 0.15s var(--ease) !important;
+}
+.chat-quick-reply:hover {
+  background: rgba(163, 182, 140, 0.18) !important;
+  border-color: rgba(163, 182, 140, 0.5) !important;
+}
+.chat-quick-reply:active {
+  transform: scale(0.97) !important;
+}
+
+/* Typing-Indikator */
+.chat-typing {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 4px !important;
+  align-items: center !important;
+  padding: 14px !important;
+}
+.chat-typing span {
+  width: 6px !important;
+  height: 6px !important;
+  border-radius: 50% !important;
+  background: var(--accent) !important;
+  animation: typingBounce 1.2s ease-in-out infinite !important;
+}
+.chat-typing span:nth-child(2) {
+  animation-delay: 0.15s !important;
+}
+.chat-typing span:nth-child(3) {
+  animation-delay: 0.3s !important;
+}
+@keyframes typingBounce {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30%           { transform: translateY(-4px); opacity: 1; }
+}
+
+/* Input-Zeile unten — deaktiviert im MVP */
+.chat-input-row {
+  position: fixed !important;
+  bottom: calc(78px + env(safe-area-inset-bottom, 0px)) !important;
+  left: 0 !important;
+  right: 0 !important;
+  max-width: 430px !important;
+  margin: 0 auto !important;
+  padding: 12px 16px !important;
+  background: rgba(10, 10, 11, 0.9) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border-top: 1px solid var(--border) !important;
+  display: flex !important;
+  gap: 10px !important;
+  align-items: center !important;
+  z-index: 50 !important;
+}
+.chat-input {
+  flex: 1 !important;
+  padding: 12px 16px !important;
+  background: var(--bg-elevated) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 999px !important;
+  color: var(--text-muted) !important;
+  font-family: var(--sans) !important;
+  font-size: 13px !important;
+  opacity: 0.6 !important;
+}
+.chat-input:disabled {
+  cursor: not-allowed !important;
+}
+.chat-send {
+  width: 42px !important;
+  height: 42px !important;
+  border-radius: 50% !important;
+  background: rgba(163, 182, 140, 0.15) !important;
+  border: 1px solid rgba(163, 182, 140, 0.3) !important;
+  color: var(--accent) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  opacity: 0.5 !important;
+}
+.chat-send svg {
+  width: 16px !important;
+  height: 16px !important;
+  max-width: 16px !important;
+  max-height: 16px !important;
+  stroke: currentColor !important;
+  fill: none !important;
+  stroke-width: 2 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+}
