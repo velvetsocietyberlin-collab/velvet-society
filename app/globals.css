@@ -1499,3 +1499,376 @@ nav.bottom-nav a.nav-btn.active:hover {
   stroke-linecap: round !important;
   stroke-linejoin: round !important;
 }
+/* ================================================================
+   Profil-Screen
+   ================================================================ */
+
+.profile-main {
+  padding-bottom: 120px !important;
+}
+
+/* Header mit Avatar */
+.profile-header {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  padding: 30px 20px 24px !important;
+  gap: 14px !important;
+}
+
+.profile-avatar {
+  width: 88px !important;
+  height: 88px !important;
+  border-radius: 50% !important;
+  background: linear-gradient(135deg, #334226 0%, #1f2817 100%) !important;
+  border: 2px solid rgba(163, 182, 140, 0.4) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-family: var(--display) !important;
+  font-size: 36px !important;
+  color: var(--accent) !important;
+  box-shadow: 0 10px 30px -10px rgba(45, 58, 32, 0.5) !important;
+}
+
+.profile-name-row {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 4px !important;
+}
+
+.profile-name {
+  font-family: var(--display) !important;
+  font-size: 28px !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1 !important;
+  margin: 0 !important;
+}
+.profile-name em {
+  font-style: italic !important;
+  color: var(--accent) !important;
+}
+
+.profile-handle {
+  font-family: var(--mono) !important;
+  font-size: 11px !important;
+  letter-spacing: 0.1em !important;
+  color: var(--text-muted) !important;
+}
+
+.profile-tier-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  padding: 5px 12px !important;
+  border-radius: 999px !important;
+  background: rgba(163, 182, 140, 0.12) !important;
+  border: 1px solid rgba(163, 182, 140, 0.3) !important;
+  color: var(--accent) !important;
+  font-family: var(--mono) !important;
+  font-size: 10px !important;
+  letter-spacing: 0.2em !important;
+  font-weight: 600 !important;
+}
+.profile-tier-badge svg {
+  width: 10px !important;
+  height: 10px !important;
+  max-width: 10px !important;
+  max-height: 10px !important;
+}
+
+.profile-edit-btn {
+  padding: 10px 20px !important;
+  background: var(--bg-elevated) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 999px !important;
+  color: var(--text) !important;
+  font-family: var(--sans) !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: all 0.15s var(--ease) !important;
+  margin-top: 4px !important;
+}
+.profile-edit-btn:hover {
+  border-color: rgba(163, 182, 140, 0.4) !important;
+}
+
+/* Stats-Row */
+.profile-stats {
+  display: flex !important;
+  justify-content: space-around !important;
+  align-items: center !important;
+  padding: 20px 20px !important;
+  margin: 0 18px !important;
+  border-radius: var(--radius) !important;
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+}
+
+.stat-item {
+  text-align: center !important;
+  flex: 1 !important;
+}
+
+.stat-value {
+  font-family: var(--display) !important;
+  font-size: 22px !important;
+  font-weight: 400 !important;
+  color: var(--text) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  line-height: 1 !important;
+}
+.stat-value .stat-star {
+  width: 12px !important;
+  height: 12px !important;
+  max-width: 12px !important;
+  max-height: 12px !important;
+  color: var(--accent) !important;
+}
+
+.stat-label {
+  font-family: var(--mono) !important;
+  font-size: 9px !important;
+  letter-spacing: 0.2em !important;
+  text-transform: uppercase !important;
+  color: var(--text-muted) !important;
+  margin-top: 4px !important;
+}
+
+.stat-divider {
+  width: 1px !important;
+  height: 28px !important;
+  background: var(--border) !important;
+}
+
+/* Tabs */
+.profile-tabs {
+  display: flex !important;
+  gap: 6px !important;
+  padding: 22px 18px 14px !important;
+}
+
+.profile-tab {
+  flex: 1 !important;
+  padding: 10px 14px !important;
+  background: transparent !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 999px !important;
+  color: var(--text-dim) !important;
+  font-family: var(--sans) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: all 0.15s var(--ease) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+}
+.profile-tab.active {
+  background: rgba(163, 182, 140, 0.12) !important;
+  border-color: rgba(163, 182, 140, 0.4) !important;
+  color: var(--accent) !important;
+}
+.profile-tab .tab-count {
+  padding: 1px 7px !important;
+  border-radius: 999px !important;
+  background: rgba(163, 182, 140, 0.2) !important;
+  font-family: var(--mono) !important;
+  font-size: 9px !important;
+  font-weight: 600 !important;
+}
+
+/* Tab-Content-Liste */
+.profile-tab-content {
+  padding: 0 18px !important;
+}
+
+.profile-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+}
+
+.profile-empty {
+  padding: 40px 20px !important;
+  text-align: center !important;
+  color: var(--text-muted) !important;
+}
+
+.profile-card {
+  padding: 16px !important;
+  border-radius: var(--radius) !important;
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+}
+
+.profile-card-head {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+}
+
+.profile-card-brand {
+  font-family: var(--mono) !important;
+  font-size: 9px !important;
+  letter-spacing: 0.2em !important;
+  text-transform: uppercase !important;
+  color: var(--text-muted) !important;
+  margin-bottom: 3px !important;
+}
+
+.profile-card-title {
+  font-family: var(--display) !important;
+  font-size: 15px !important;
+  color: var(--text) !important;
+  font-weight: 400 !important;
+  line-height: 1.2 !important;
+}
+
+.profile-card-due {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-end !important;
+  gap: 2px !important;
+  padding: 6px 10px !important;
+  border-radius: 10px !important;
+  background: rgba(163, 182, 140, 0.08) !important;
+  border: 1px solid rgba(163, 182, 140, 0.25) !important;
+  text-align: right !important;
+}
+.profile-card-due span {
+  font-family: var(--mono) !important;
+  font-size: 8px !important;
+  letter-spacing: 0.2em !important;
+  text-transform: uppercase !important;
+  color: var(--text-muted) !important;
+}
+.profile-card-due strong {
+  font-family: var(--display) !important;
+  font-size: 14px !important;
+  color: var(--accent) !important;
+  font-weight: 400 !important;
+}
+
+.profile-card-status {
+  font-size: 12px !important;
+  color: var(--text-muted) !important;
+  padding: 8px 12px !important;
+  border-radius: 10px !important;
+  background: var(--bg-elevated) !important;
+}
+.profile-card-status.active-status {
+  color: var(--accent) !important;
+  background: rgba(163, 182, 140, 0.08) !important;
+  border: 1px solid rgba(163, 182, 140, 0.2) !important;
+}
+
+.profile-card-meta {
+  display: flex !important;
+  gap: 8px !important;
+  font-family: var(--mono) !important;
+  font-size: 10px !important;
+  letter-spacing: 0.1em !important;
+  color: var(--text-muted) !important;
+}
+
+/* Stars in Profil-Karten */
+.star-row {
+  display: inline-flex !important;
+  gap: 2px !important;
+  color: var(--accent) !important;
+}
+.star-row svg {
+  width: 11px !important;
+  height: 11px !important;
+  max-width: 11px !important;
+  max-height: 11px !important;
+}
+
+/* Review-Card */
+.profile-card.review {
+  gap: 12px !important;
+}
+.review-text {
+  font-size: 13px !important;
+  color: var(--text) !important;
+  line-height: 1.5 !important;
+  font-style: italic !important;
+  opacity: 0.9 !important;
+}
+.review-date {
+  font-family: var(--mono) !important;
+  font-size: 9px !important;
+  letter-spacing: 0.15em !important;
+  color: var(--text-faint) !important;
+}
+
+/* Footer — Settings + Logout */
+.profile-footer {
+  margin: 30px 18px 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+}
+
+.profile-footer-btn {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 16px 18px !important;
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  color: var(--text) !important;
+  font-family: var(--sans) !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  text-align: left !important;
+  cursor: pointer !important;
+  transition: all 0.15s var(--ease) !important;
+  width: 100% !important;
+}
+.profile-footer-btn:hover {
+  border-color: rgba(163, 182, 140, 0.3) !important;
+}
+.profile-footer-btn svg {
+  width: 18px !important;
+  height: 18px !important;
+  max-width: 18px !important;
+  max-height: 18px !important;
+  stroke: currentColor !important;
+  fill: none !important;
+  stroke-width: 1.8 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+  flex-shrink: 0 !important;
+  color: var(--text-muted) !important;
+}
+.profile-footer-btn span {
+  flex: 1 !important;
+}
+.profile-footer-btn svg.arrow {
+  width: 14px !important;
+  height: 14px !important;
+  max-width: 14px !important;
+  max-height: 14px !important;
+  opacity: 0.5 !important;
+}
+
+.profile-footer-btn.logout {
+  color: #e07a7a !important;
+}
+.profile-footer-btn.logout svg {
+  color: #e07a7a !important;
+}

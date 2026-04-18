@@ -42,12 +42,13 @@ export type Deal = {
 
 export type Creator = {
   id: string
-  instagram_handle: string | null
+  email: string
   full_name: string
-  city: string
-  follower_count: number
-  rating: number
-  reviews_count: number
+  instagram_handle: string | null
   tier: 'silver' | 'gold' | 'platinum'
-  status: 'pending' | 'approved' | 'rejected' | 'suspended'
+  status: 'pending' | 'approved' | 'rejected'
+  followers: number | null
+  rating: number
+  reviews_count: number | null
+  created_at: string
 }
