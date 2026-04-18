@@ -3,9 +3,7 @@ import CityPicker from './components/CityPicker'
 
 const DEFAULT_CITIES = ['Berlin']
 
-// Lädt Deals aus Supabase, optional gefiltert nach Städten
 async function getDeals(cities: string[]): Promise<Deal[]> {
-  // Erst alle Brand-IDs aus den gewählten Städten holen
   const { data: brands, error: brandsError } = await supabase
     .from('brands')
     .select('id')
@@ -33,7 +31,6 @@ async function getDeals(cities: string[]): Promise<Deal[]> {
   return data || []
 }
 
-// Anzahl Deals pro Stadt (für die Zahl im City-Picker)
 async function getCityCounts(): Promise<Record<string, number>> {
   const { data, error } = await supabase
     .from('brands')
@@ -50,7 +47,6 @@ async function getCityCounts(): Promise<Record<string, number>> {
 }
 
 const BRAND_IMAGES: Record<string, string> = {
-  // Berlin
   'the-coral': 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80',
   'resonance-nights': 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&q=80',
   'dbrunch-berlin': 'https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?w=800&q=80',
@@ -58,17 +54,12 @@ const BRAND_IMAGES: Record<string, string> = {
   'padelbros-berlin': 'https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=800&q=80',
   'waldorf-astoria-berlin': 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80',
   'schlosshotel-berlin': 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80',
-  // München
   'kilians-munich': 'https://images.unsplash.com/photo-1543007631-283050bb3e8c?w=800&q=80',
   'blitz-munich': 'https://images.unsplash.com/photo-1571266028243-d220c6a6c0c5?w=800&q=80',
-  // Hamburg
   'nikkei-nine-hh': 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=800&q=80',
   'ubel-gefahrlich': 'https://images.unsplash.com/photo-1598387180725-98b3957c9e9f?w=800&q=80',
-  // Köln
   'ox-klee-koeln': 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80',
-  // Frankfurt
   'jaguars-frankfurt': 'https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=800&q=80',
-  // Düsseldorf
   'nagaya-duesseldorf': 'https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=800&q=80',
 }
 
@@ -95,7 +86,6 @@ export default async function HomePage({
 
   return (
     <main className="app-screen">
-      {/* Header */}
       <header className="home-header">
         <div className="greet">
           <span>Donnerstag</span>
@@ -107,7 +97,6 @@ export default async function HomePage({
         </div>
       </header>
 
-      {/* Creator-Card */}
       <div className="creator-card">
         <div className="creator-card-top">
           <div className="card-brand">
@@ -148,7 +137,6 @@ export default async function HomePage({
         </div>
       </div>
 
-      {/* Deals */}
       <div className="section-head">
         <h2>
           Deals <em>in deiner Nähe</em>
@@ -161,7 +149,7 @@ export default async function HomePage({
       ) : (
         <div className="deals-grid">
           {deals.map((deal) => (
-            <article key={deal.id} className="deal">
+            <a key={deal.id} href={`/deal/${deal.id}`} className="deal deal-link">
               <div
                 className="deal-media"
                 style={{
@@ -178,7 +166,7 @@ export default async function HomePage({
                 <div className="deal-title">{deal.title}</div>
                 <div className="deal-req">{deal.requirements}</div>
               </div>
-            </article>
+            </a>
           ))}
         </div>
       )}

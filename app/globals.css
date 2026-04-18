@@ -1872,3 +1872,279 @@ nav.bottom-nav a.nav-btn.active:hover {
 .profile-footer-btn.logout svg {
   color: #e07a7a !important;
 }
+
+/* ================================================================
+   Deal-Detail-Page
+   ================================================================ */
+
+.deal-detail {
+  padding: 0 !important;
+  padding-bottom: 180px !important;
+}
+
+/* Hero-Image mit Gradient */
+.deal-hero {
+  position: relative !important;
+  width: 100% !important;
+  aspect-ratio: 4 / 3 !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-color: var(--bg-card) !important;
+}
+.deal-hero::after {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(180deg, rgba(10,10,11,0.2) 0%, rgba(10,10,11,0) 50%, rgba(10,10,11,0.95) 100%) !important;
+}
+
+.deal-back {
+  position: absolute !important;
+  top: calc(16px + env(safe-area-inset-top, 0px)) !important;
+  left: 16px !important;
+  z-index: 10 !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  background: rgba(10, 10, 11, 0.7) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid var(--border) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: var(--text) !important;
+  text-decoration: none !important;
+  transition: all 0.15s var(--ease) !important;
+}
+.deal-back:hover {
+  background: rgba(10, 10, 11, 0.9) !important;
+}
+.deal-back svg {
+  width: 18px !important;
+  height: 18px !important;
+  max-width: 18px !important;
+  max-height: 18px !important;
+  stroke: currentColor !important;
+  fill: none !important;
+  stroke-width: 2 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+}
+
+.deal-hero-badge {
+  position: absolute !important;
+  top: calc(20px + env(safe-area-inset-top, 0px)) !important;
+  right: 16px !important;
+  padding: 6px 12px !important;
+  border-radius: 999px !important;
+  background: rgba(10, 10, 11, 0.8) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+  font-family: var(--mono) !important;
+  font-size: 9px !important;
+  letter-spacing: 0.2em !important;
+  text-transform: uppercase !important;
+  z-index: 10 !important;
+}
+
+.deal-hero-value {
+  position: absolute !important;
+  bottom: 20px !important;
+  right: 20px !important;
+  padding: 10px 18px !important;
+  border-radius: 14px !important;
+  background: rgba(163, 182, 140, 0.92) !important;
+  color: var(--accent-ink) !important;
+  font-family: var(--display) !important;
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  z-index: 10 !important;
+}
+
+/* Info-Bereich (Brand + Titel) */
+.deal-info {
+  padding: 24px 22px 18px !important;
+}
+.deal-brand-name {
+  font-family: var(--mono) !important;
+  font-size: 10px !important;
+  letter-spacing: 0.25em !important;
+  text-transform: uppercase !important;
+  color: var(--accent) !important;
+  margin-bottom: 10px !important;
+}
+.deal-headline {
+  font-family: var(--display) !important;
+  font-size: 30px !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.1 !important;
+  margin: 0 0 8px 0 !important;
+  color: var(--text) !important;
+}
+.deal-subtitle {
+  font-size: 14px !important;
+  color: var(--text-muted) !important;
+  line-height: 1.5 !important;
+  margin: 0 !important;
+}
+
+/* Sektionen */
+.deal-section {
+  padding: 18px 22px !important;
+  border-top: 1px solid var(--border) !important;
+}
+.deal-section h3 {
+  font-family: var(--mono) !important;
+  font-size: 10px !important;
+  letter-spacing: 0.25em !important;
+  text-transform: uppercase !important;
+  color: var(--text-muted) !important;
+  margin: 0 0 12px 0 !important;
+  font-weight: 600 !important;
+}
+.deal-prose {
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  color: var(--text) !important;
+  margin: 0 !important;
+}
+
+/* Mission-Liste */
+.deal-mission-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+}
+.deal-mission-item {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 14px !important;
+  padding: 14px 16px !important;
+  border-radius: var(--radius) !important;
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+}
+.mission-num {
+  flex-shrink: 0 !important;
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 50% !important;
+  background: rgba(163, 182, 140, 0.15) !important;
+  border: 1px solid rgba(163, 182, 140, 0.35) !important;
+  color: var(--accent) !important;
+  font-family: var(--display) !important;
+  font-size: 14px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.mission-text {
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+  color: var(--text) !important;
+  padding-top: 3px !important;
+}
+
+/* Meta-Grid (Deadline, Rating, Content) */
+.deal-meta-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 10px !important;
+}
+.deal-meta-item {
+  padding: 14px 16px !important;
+  border-radius: var(--radius) !important;
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+}
+.deal-meta-item.full {
+  grid-column: 1 / -1 !important;
+}
+.meta-label {
+  font-family: var(--mono) !important;
+  font-size: 9px !important;
+  letter-spacing: 0.2em !important;
+  text-transform: uppercase !important;
+  color: var(--text-muted) !important;
+  margin-bottom: 6px !important;
+}
+.meta-value {
+  font-family: var(--display) !important;
+  font-size: 16px !important;
+  color: var(--text) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+}
+.meta-value svg {
+  width: 12px !important;
+  height: 12px !important;
+  max-width: 12px !important;
+  max-height: 12px !important;
+  color: var(--accent) !important;
+}
+
+/* Sticky-CTA unten (bleibt über Bottom-Nav sichtbar) */
+.deal-sticky-cta {
+  position: fixed !important;
+  bottom: calc(80px + env(safe-area-inset-bottom, 0px)) !important;
+  left: 0 !important;
+  right: 0 !important;
+  max-width: 430px !important;
+  margin: 0 auto !important;
+  padding: 14px 18px !important;
+  background: linear-gradient(180deg, rgba(10,10,11,0) 0%, rgba(10,10,11,0.9) 30%) !important;
+  z-index: 20 !important;
+}
+.deal-book-btn {
+  width: 100% !important;
+  padding: 16px 20px !important;
+  background: var(--accent) !important;
+  color: var(--accent-ink) !important;
+  border: none !important;
+  border-radius: var(--radius) !important;
+  font-family: var(--sans) !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  transition: all 0.2s var(--ease) !important;
+  box-shadow: 0 10px 30px -10px rgba(163, 182, 140, 0.6) !important;
+}
+.deal-book-btn:hover {
+  opacity: 0.95 !important;
+  transform: translateY(-1px) !important;
+}
+.deal-book-btn:active {
+  transform: translateY(0) !important;
+}
+.deal-book-btn svg {
+  width: 16px !important;
+  height: 16px !important;
+  max-width: 16px !important;
+  max-height: 16px !important;
+  stroke: currentColor !important;
+  fill: none !important;
+  stroke-width: 2.2 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+}
+
+/* Deal-Card Klick-Effekt (Link-Variante) */
+a.deal-link {
+  text-decoration: none !important;
+  color: inherit !important;
+  display: block !important;
+  transition: transform 0.15s var(--ease) !important;
+}
+a.deal-link:active {
+  transform: scale(0.98) !important;
+}

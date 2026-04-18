@@ -25,7 +25,7 @@ export type Brand = {
 export type Deal = {
   id: string
   brand_id: string
-  type: 'barter' | 'ugc'
+  type: string
   title: string
   subtitle: string | null
   about: string | null
@@ -33,11 +33,14 @@ export type Deal = {
   badge: string | null
   value_eur: number | null
   requirements: string | null
+  missions: unknown
   credit_description: string | null
   slots_description: string | null
+  min_rating: number | null
   deadline: string | null
-  // Brand-Info gejoined (kommt von Query mit .select('*, brands(*)') )
-  brands?: Brand
+  is_active: boolean
+  created_at: string
+  brands?: Brand | null
 }
 
 export type Creator = {
